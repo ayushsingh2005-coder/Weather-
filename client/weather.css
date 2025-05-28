@@ -1,0 +1,108 @@
+
+
+body{
+    background-color: #e9c454ab;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form{
+    background:linear-gradient(180deg ,hsl(210,100%,75%),hsl(40 ,100%,75%));
+    align-content: center;
+    margin-top:5%;
+    box-shadow: 0 4px 5px rgb(12, 12, 12);
+    height: 27rem;
+    border:2px solid black;
+    border-radius:7px;
+    gap: 1rem;
+}
+.cityInput{
+    text-align:left;
+    height:2rem;
+    font-size:medium;
+    font-weight: 500;
+    font-weight:bold;
+    border: 2px solid hsl(180, 65%, 24%);
+    border-radius:4px;
+    margin:10px;
+    width: 300px;
+    outline: none;
+}
+.cityInput:focus{
+    border: 2px solid rgb(4, 11, 213);
+}
+button[type="submit"]{
+    padding:8px 10px;
+    font-size:large;
+    font-weight:500;
+    margin-right: 10px;
+    border-radius: 3px;
+     background-color: rgb(49, 124, 252);
+     color: #000000;
+    border:1px solid black;
+    outline: none;
+}
+.form button:hover{
+        box-shadow: 0 0 4px hsl(0, 0%, 100%);
+        background-color:rgb(1, 64, 172);
+        color: hsl(0, 0%, 100%);
+        font-weight:500;
+        font-size:large;
+        cursor: pointer;
+        border-radius: 3px;
+       transition: 0.2s ease-out;
+       transform: translateZ(10px);
+}
+
+.card{
+    
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    margin-top:0;
+    margin-bottom:20px;
+    font-weight: 500;
+}
+
+p{
+    font-size:1.5rem;
+    margin:9px 0;
+    font-weight: 500;
+    color: rgb(8, 53, 53);
+}
+
+.cityDisplay ,.tempDisplay {
+    font-size: 3.5rem;
+    font-weight: bold;
+
+}
+.humidityDisplay{
+    font-weight:bold;
+    margin-bottom:25px;
+    color: rgb(28, 87, 142);
+}
+
+.descDisplay{
+    font-style: italic;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.WeatherEmoji{
+    margin: 0;
+    font-size:2rem;
+    font-weight: 500;
+    
+}
+
+.errorDisplay{
+    font-size: 2rem;
+    font-weight: 500;
+    color: #434502;
+}
