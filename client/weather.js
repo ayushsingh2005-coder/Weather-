@@ -14,11 +14,11 @@ weatherForm.addEventListener("submit", async (event) => {
             const weatherData = await getWeatherData(city);
             displayWeatherInfo(weatherData);
         } catch (error) {
-            console.log(error);
-            displayError("Could not fetch weather data.");
+            console.error(error);
+            displayError("Could not fetch weather data. Please try again.");
         }
     } else {
-        displayError("Please enter the city");
+        displayError("Please enter a city name.");
     }
 });
 
@@ -26,18 +26,18 @@ async function getWeatherData(city) {
     const apiurl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`;
 
     const response = await fetch(apiurl);
-    console.log(response);
 
     if (!response.ok) {
         throw new Error("Could not fetch weather data");
     }
+
     return await response.json();
 }
 
 function displayWeatherInfo(data) {
     const { name: city, main: { temp, humidity }, weather: [{ description, id }] } = data;
 
-    card.textContent = "";
+    card.innerHTML = "";
     card.style.display = "flex";
 
     const cityDisplay = document.createElement("h1");
@@ -55,8 +55,8 @@ function displayWeatherInfo(data) {
     cityDisplay.classList.add("cityDisplay");
     tempDisplay.classList.add("tempDisplay");
     humidityDisplay.classList.add("humidityDisplay");
-    descDisplay.classList.add("descDisplay"); // Fixed here
-    weatherEmoji.classList.add("weatherEmoji"); // Typo fix optional
+    descDisplay.classList.add("descDisplay");
+    weatherEmoji.classList.add("weatherEmoji");
 
     card.appendChild(cityDisplay);
     card.appendChild(tempDisplay);
@@ -68,19 +68,19 @@ function displayWeatherInfo(data) {
 function getWeatherEmoji(weatherId) {
     switch (true) {
         case (weatherId >= 200 && weatherId < 300):
-            return "🌩️";
+            return "🌩️"; // Thunderstorm
         case (weatherId >= 300 && weatherId < 400):
-            return "🌧️";
+            return "🌦️"; // Drizzle
         case (weatherId >= 500 && weatherId < 600):
-            return "🌧️";
+            return "🌧️"; // Rain
         case (weatherId >= 600 && weatherId < 700):
-            return "❄️";
+            return "❄️"; // Snow
         case (weatherId === 800):
-            return "🌞";
+            return "☀️"; // Clear
         case (weatherId >= 801 && weatherId < 810):
-            return "☁️";
+            return "☁️"; // Clouds
         default:
-            return "❓";
+            return "❓"; // Unknown
     }
 }
 
@@ -89,7 +89,7 @@ function displayError(message) {
     errorDisplay.textContent = message;
     errorDisplay.classList.add("errorDisplay");
 
-    card.textContent = "";
+    card.innerHTML = "";
     card.style.display = "flex";
     card.appendChild(errorDisplay);
 }
